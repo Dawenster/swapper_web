@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   def index
-    render json: Shift.all
+    render json: { "name": Shift.first.name }
   end
 
   def create
