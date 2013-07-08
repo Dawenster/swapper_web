@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+locations = [
+  "Burnaby General Hospital",
+  "Vancouver General Hospital",
+  "Royal Columbia Hospital",
+  "St. Paul's Hospital",
+  "Surrey Memorial Hospital"
+]
+
+10.times do
+  Shift.create(:location => locations.sample,
+               :locationDetail => Faker::Lorem.word,
+               :date => Time.now + rand(1..10).days,
+               :duration => rand(5..20),
+               :email => Faker::Internet.email,
+               :taken => false,
+               :notes => Faker::Lorem.paragraph)
+end
