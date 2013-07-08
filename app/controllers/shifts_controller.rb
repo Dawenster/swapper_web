@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   def index
-    render :json => { :name => Shift.first.name }
+    render :json => { :shifts => Shift.all }
   end
 
   def create
