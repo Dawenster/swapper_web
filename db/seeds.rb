@@ -11,6 +11,7 @@ locations = [
                :locationDetail => Faker::Lorem.word,
                :date => Time.now + rand(1..10).days,
                :duration => rand(5..20),
+               :name => Faker::Name.name,
                :email => Faker::Internet.email,
                :taken => false,
                :notes => Faker::Lorem.paragraph)
