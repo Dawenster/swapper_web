@@ -16,10 +16,12 @@ class ShiftsController < ApplicationController
 				    						 :taken => taken,
 				    						 :notes => params["notes"],
 				    						 :uniqueID => params["uniqueID"])
+
+    render :json => { :shiftID => shift.id }
   end
 
   def update
-    date = DateTime.strptime(params["date"].gsub("  0000",""), "%Y-%m-%d %H:%M:%S")
+    date = DateTime.strptime(params["date"].gsub("___","").gsub(" +0000",""), "%Y-%m-%d %H:%M:%S")
   	taken = params["taken"] == "true" ? true : false
 
     shift = Shift.find_by_uniqueID(params["uniqueID"])
@@ -30,8 +32,9 @@ class ShiftsController < ApplicationController
 					    						  :duration => params["duration"],
 					    						  :email => params["email"],
 					    						  :taken => taken,
-					    						  :notes => params["notes"],
-					    						  :uniqueID => params["uniqueID"])
+					    						  :notes => params["notes"])
+
+    render :text => "Updated"
   end
 
   def destroy
