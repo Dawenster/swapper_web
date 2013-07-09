@@ -1,7 +1,7 @@
 locations = [
   "Burnaby General Hospital",
   "Vancouver General Hospital",
-  "Royal Columbia Hospital",
+  "Royal Columbian Hospital",
   "St. Paul's Hospital",
   "Surrey Memorial Hospital"
 ]
@@ -14,5 +14,6 @@ locations = [
                :name => Faker::Name.name,
                :email => Faker::Internet.email,
                :taken => false,
-               :notes => Faker::Lorem.paragraph)
+               :notes => Faker::Lorem.paragraph,
+               :uniqueID => (0...50).map{ ('a'..'z').to_a[rand(26)] }.join)
 end
