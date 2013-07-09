@@ -39,5 +39,6 @@ class ShiftsController < ApplicationController
 
   def destroy
     Shift.find_by_uniqueID(params["uniqueID"]).destroy
+    render :text => "Deleted"
   end
 end
