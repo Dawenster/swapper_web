@@ -19,10 +19,22 @@ class ShiftsController < ApplicationController
   end
 
   def update
-    
+    date = DateTime.strptime(params["date"].gsub("  0000",""), "%Y-%m-%d %H:%M:%S")
+  	taken = params["taken"] == "true" ? true : false
+
+    shift = Shift.find_by_uniqueID(params["uniqueID"])
+    shift.update_attributes(:name => params["name"],
+					    						  :location => params["location"],
+					    						  :locationDetail => params["locationDetail"],
+					    						  :date => date,
+					    						  :duration => params["duration"],
+					    						  :email => params["email"],
+					    						  :taken => taken,
+					    						  :notes => params["notes"],
+					    						  :uniqueID => params["uniqueID"])
   end
 
   def destroy
-    
+    Shift.find_by_uniqueID(params["uniqueID"]).destroy
   end
 end
