@@ -1,3 +1,3 @@
 class Shift < ActiveRecord::Base
-  attr_accessible :location, :locationDetail, :date, :duration, :name, :email, :taken, :notes
+  attr_accessible :location, :locationDetail, :date, :duration, :name, :email, :taken, :notes, :uniqueID
 end
