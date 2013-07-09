@@ -21,18 +21,18 @@ class ShiftsController < ApplicationController
   end
 
   def update
-    date = DateTime.strptime(params["date"].gsub("___","").gsub(" +0000",""), "%Y-%m-%d %H:%M:%S")
+    date = DateTime.strptime(params["date"].gsub("___"," ").gsub(" +0000",""), "%Y-%m-%d %H:%M:%S")
   	taken = params["taken"] == "true" ? true : false
 
     shift = Shift.find_by_uniqueID(params["uniqueID"])
-    shift.update_attributes(:name => params["name"],
-					    						  :location => params["location"],
-					    						  :locationDetail => params["locationDetail"],
+    shift.update_attributes(:name => params["name"].gsub("___"," "),
+					    						  :location => params["location"].gsub("___"," "),
+					    						  :locationDetail => params["locationDetail"].gsub("___"," "),
 					    						  :date => date,
-					    						  :duration => params["duration"],
-					    						  :email => params["email"],
+					    						  :duration => params["duration"].gsub("___"," "),
+					    						  :email => params["email"].gsub("___"," "),
 					    						  :taken => taken,
-					    						  :notes => params["notes"])
+					    						  :notes => params["notes"].gsub("___"," "))
 
     render :text => "Updated"
   end
