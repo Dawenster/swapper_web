@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   def index
-    render :json => { :shifts => Shift.all }
+    render :json => { :shifts => Shift.order("date ASC") }
   end
 
   def create
